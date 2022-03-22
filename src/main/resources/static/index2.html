@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline Service</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<style>
+    .write-box{
+        width:600px;
+        height : 600px;
+        border : 1px solid;
+        margin : 50px auto 0 auto;
+        text-align: center;
+    }
+
+    #contents {
+        width :300px;
+        height : 300px;
+    }
+
+</style>
+
+<script>
+    function writePost() {
+        // 1. 작성한 메모를 불러옵니다.
+        let contents = $('#contents').val();
+        let title = $('#title').val();
+        let username = $('#user-name').val();
+        // 4. 전달할 data JSON으로 만듭니다.
+        let data = {'username': username, 'contents': contents, 'title':title};
+        // 5. POST /api/memos 에 data를 전달합니다.
+        $.ajax({
+            type: "POST",
+            url: "/api/memos",
+            contentType: "application/json", // JSON 형식으로 전달함을 알리기
+            data: JSON.stringify(data),
+            success: function (response) {
+                alert('메시지가 성공적으로 작성되었습니다.');
+                window.location.reload();
+            }
+        });
+    }
+</script>
+
+<body>
+<div class="write-box">
+    <h1>
+        글쓰기 페이지
+    </h1>
+    <div>
+
+    </div>
+    <p>작성자 이름</p>
+    <p><input id="user-name" type="text"/></p>
+    <p>제목</p>
+    <p><input id="title" type="text"/></p>
+    <textarea class="field" placeholder="공유하고 싶은 소식을 입력해주세요" id="contents" cols="30"
+              rows="10"></textarea>
+    <div>
+        <button class="mybtn" onclick="writePost()">글 작성 완료</button>
+    </div>
+</div>
+</body>
+</html>
