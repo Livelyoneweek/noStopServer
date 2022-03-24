@@ -8,7 +8,7 @@ REPOSITORY=/home/ubuntu/app/step3
 PROJECT_NAME=springboot-webservice
 
 
-CURRENT_PROFILE2=$(curl -s http://localhost/profile)
+CURRENT_PROFILE2=$(curl -s http://ab.choideveloper.shop/profile)
 echo "> 제발테스트테스트 : $CURRENT_PROFILE2 "
 
 if [ ${CURRENT_PROFILE2} == real2 ]
