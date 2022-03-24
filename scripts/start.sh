@@ -7,6 +7,17 @@ source ${ABSDIR}/profile.sh
 REPOSITORY=/home/ubuntu/app/step3
 PROJECT_NAME=springboot-webservice
 
+
+CURRENT_PROFILE2=$(curl -s http://localhost/profile)
+echo "> 제발테스트테스트 : $CURRENT_PROFILE2 "
+
+if [ ${CURRENT_PROFILE2} == real2 ]
+    then
+      echo "> 이건 real2"
+    else
+      echo "> 이건 real1"
+    fi
+
 echo "> Build 파일 복사"
 echo "> cp $REPOSITORY/zip/*.jar $REPOSITORY/"
 
