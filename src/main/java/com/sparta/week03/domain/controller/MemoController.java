@@ -23,6 +23,7 @@ public class MemoController {
         return memoRepository.save(memo);
     }
 
+
     @GetMapping("/api/memos")
     public List<Memo> getMemos() {
         LocalDateTime now = LocalDateTime.now();
