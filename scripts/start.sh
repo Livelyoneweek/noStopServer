@@ -7,6 +7,22 @@ source ${ABSDIR}/profile.sh
 REPOSITORY=/home/ubuntu/app/step3
 PROJECT_NAME=springboot-webservice
 
+RESPONSE_CODE2=$(curl -s -o /dev/null -w "%{http_code}" https://ab.choideveloper.shop/profile)
+
+CURRENT_PROFILE2=$(curl -s https://ab.choideveloper.shop/profile)
+echo "> 현재 코드는 : $(RESPONSE_CODE2)"
+echo "> 현재 real은 : $(CURRENT_PROFILE2)"
+
+if [ ${CURRENT_PROFILE2} == real1 ]
+    then
+      IDLE_PROFILE=real2
+    else
+      IDLE_PROFILE=real1
+    fi
+
+    echo "최종 real은 : ${IDLE_PROFILE}"
+
+
 echo "> Build 파일 복사"
 echo "> cp $REPOSITORY/zip/*.jar $REPOSITORY/"
 
