@@ -30,7 +30,6 @@ public class MemoController {
         return memoRepository.findAllByModifiedAtBetweenOrderByModifiedAtDesc(yesterday, now);
     }
 
-
     @PutMapping("/api/memos/{id}")
     public Long updateMemo(@PathVariable Long id, @RequestBody MemoRequestDto requestDto) {
         memoService.update(id,requestDto);
