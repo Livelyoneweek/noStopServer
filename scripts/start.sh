@@ -43,9 +43,11 @@ IDLE_PROFILE=$(find_idle_profile)
 
 echo "> $JAR_NAME 를 profile=$IDLE_PROFILE 로 실행합니다."
 
-#nohup java -jar \
-#    -Dspring.config.location=classpath:/application.properties,classpath:/application-$IDLE_PROFILE.properties \
-#    -Dspring.profiles.active=$IDLE_PROFILE \
-#    $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
+#nohup java -jar -Dspring.profiles.active=$IDLE_PROFILE week03-0.0.1-SNAPSHOT.jar
 
-nohup java -jar -Dspring.profiles.active=$IDLE_PROFILE -Dspring.config.location=file:///home/ubuntu/app/step3/application.properties,file:///home/ubuntu/app/step3/real-application.properties
+nohup java -jar \
+    -Dspring.profiles.active=$IDLE_PROFILE \
+    $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
+
+#    -Dspring.config.location=classpath:/application.properties,classpath:/application-$IDLE_PROFILE.properties \
+#nohup java -jar -Dspring.profiles.active=$IDLE_PROFILE -Dspring.config.location=file:///home/ubuntu/app/step3/application.properties,file:///home/ubuntu/app/step3/real-application.properties
