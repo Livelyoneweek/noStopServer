@@ -29,7 +29,6 @@ public class Memo extends Timestamped { // 생성,수정 시간을 자동으로 
         this.title = title;
     }
 
-
     public Memo(MemoRequestDto requestDto) {
         this.username = requestDto.getUsername();
         this.contents = requestDto.getContents();
